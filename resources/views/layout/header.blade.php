@@ -1,3 +1,7 @@
+<?php
+use App\Http\Controllers\ProductController;
+$totalCount = ProductController::cartItem();
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Ecommerc App</a>
@@ -10,15 +14,16 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Cart</a>
+                    <a class="nav-link active" href="#">Cart({{$totalCount}})</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Order</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form action="/search" method="post" class="d-flex">
+                @csrf
+                <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
