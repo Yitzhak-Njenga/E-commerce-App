@@ -19,3 +19,4 @@ Route::get('/login', function () {
 Route::post('/login',[\App\Http\Controllers\UserController::class,'login']);
 
 Route::get('/products',[\App\Http\Controllers\ProductController::class,'index']);
+Route::get('/products/details/{id}',[\App\Http\Controllers\ProductController::class,'product']);
