@@ -15,10 +15,14 @@
                 <button class="btn btn-danger">{{$product->price}}</h2></button>
                 <br><br>
                 <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary">Add to cart</button>
+                        <form action="/add_to_cart" method="post">
+                            @csrf
+                            <input hidden type="text" name="product_id" value="{{$product->id}}">
+                        <button type="submit" class="btn btn-primary">Add to cart</button>
+                            <button  type="button" class="btn btn-success">Buy Now</button>
+                        </form>
 
-                        <button class="btn btn-success">Buy Now</button>
+
                     </div>
 
                 </div>
