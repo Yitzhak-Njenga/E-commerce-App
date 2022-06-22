@@ -1,6 +1,11 @@
 <?php
 use App\Http\Controllers\ProductController;
-$totalCount = ProductController::cartItem();
+Use Illuminate\Support\Facades\Session;
+$totalCount = 0;
+if (Session::has('user')){
+    $totalCount = ProductController::cartItem();
+}
+
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -18,14 +23,35 @@ $totalCount = ProductController::cartItem();
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link active" href="#">Cart({{$totalCount}})</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link active" href="#">Order</a>
                 </li>
-            </ul>
+
+
+
             <form action="/search" method="post" class="d-flex">
                 @csrf
                 <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+
+                @if(Session::has('user'))
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{Session::get('user')['name']}}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
+                        </ul>
+                    </li>
+                @else
+                    <li><a href="/login"></a> </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>
