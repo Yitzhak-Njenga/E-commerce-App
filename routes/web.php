@@ -30,3 +30,4 @@ Route::get('/products/details/{id}',[\App\Http\Controllers\ProductController::cl
 Route::post('/search',[\App\Http\Controllers\ProductController::class,'search']);
 Route::post('/add_to_cart',[\App\Http\Controllers\ProductController::class,'add_to_cart']);
 Route::get('/cart-list',[\App\Http\Controllers\ProductController::class,'cartList']);
+Route::get('//removecart/{cart_id}',[\App\Http\Controllers\ProductController::class,'removeCart']);

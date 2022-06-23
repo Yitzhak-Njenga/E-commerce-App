@@ -24,7 +24,7 @@
                                <h5>{{$product->price}}</h5>
                            </div>
                            <div class="col">
-                               <btn class="btn btn-warning">Remove from Cart</btn>
+                               <a href="/removecart/{{$product->cart_id}}" class="btn btn-warning">Remove from Cart</a>
                            </div>
 
                        </div>
