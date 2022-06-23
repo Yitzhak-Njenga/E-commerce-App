@@ -19,13 +19,8 @@ if (Session::has('user')){
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Cart({{$totalCount}})</a>
+                    <a class="nav-link active" href="/cart-list">Cart({{$totalCount}})</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Cart({{$totalCount}})</a>
-                </li>
-
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Order</a>
                 </li>
