@@ -2,7 +2,12 @@
 @section('content')
    <div class="">
            <div class="">
-               <h4>Cart List</h4>
+               <div class="container">
+                  <h4 class="text-center">Cart List</h4>
+                       <a href="odernow" class="btn btn-outline-danger justify-content-end">Order Now</a><br><br>
+
+               </div>
+
                @foreach($products as $product)
 
                    <div class="container">

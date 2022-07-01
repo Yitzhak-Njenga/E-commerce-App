@@ -91,5 +91,19 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
+    public function oderNow(){
+        $user = Session::get('user')['id'];
+        return   DB::table('cart')
+            ->join('products', 'cart.product_id', '=', 'products.id')
+            ->where('cart.user_id', $user)
+            ->sum('products.price');
+
+        dump($total);
+
+
+
+        return view('order',['totals'=>$total]);
+
+    }
 
 }
