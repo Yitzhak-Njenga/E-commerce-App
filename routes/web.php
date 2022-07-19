@@ -17,6 +17,10 @@ Use Illuminate\Support\Facades\Session;
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/register',function (){
+    return view('/register');
+});
+
 //logout and remove session
 Route::get('/logout',function (){
     Session::forget('user');
@@ -24,6 +28,7 @@ Route::get('/logout',function (){
 });
 
 Route::post('/login',[\App\Http\Controllers\UserController::class,'login']);
+Route::post('//registerUser',[\App\Http\Controllers\UserController::class,'register']);
 
 Route::get('/products',[\App\Http\Controllers\ProductController::class,'index']);
 Route::get('/products/details/{id}',[\App\Http\Controllers\ProductController::class,'product']);
@@ -34,3 +39,4 @@ Route::get('/removecart/{cart_id}',[\App\Http\Controllers\ProductController::cla
 Route::get('/odernow',[\App\Http\Controllers\ProductController::class,'oderNow']);
 Route::post('/orderplace',[\App\Http\Controllers\ProductController::class,'orderPlace']);
 Route::get('/my-orders',[\App\Http\Controllers\ProductController::class,'myOrders']);
+
