@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Orders;
 use App\Models\Product;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
@@ -102,4 +103,27 @@ class ProductController extends Controller
 
     }
 
+    public function orderPlace(Request $request){
+        $user = Session::get('user')['id'];
+        $allCart = Cart::where('user_id',$user)->get();
+
+        foreach ($allCart as $cart)
+        {
+            $order = new Orders;
+            $order->product_id=$cart['product_id'];
+            $order->user_id=$cart['user_id'];
+            $order->payment_status="pending";
+            $order->first_name = $request->first_name;
+            $order->second_name = $request->second_name;
+            $order->location = $request->location;
+            $order->email = $request->email;
+            $order->phone = $request->phone;
+            Cart::where('user_id',$user)->delete();
+            $order->save();
+        }
+
+        return redirect('/products');
+
+
+    }
 }
