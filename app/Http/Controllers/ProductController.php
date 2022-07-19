@@ -82,8 +82,6 @@ class ProductController extends Controller
             ->select('products.*','cart.id as cart_id')
             ->get();
 
-
-
         return view('CartList',['products'=>$products]);
     }
     public function removeCart($id){
@@ -93,12 +91,10 @@ class ProductController extends Controller
     }
     public function oderNow(){
         $user = Session::get('user')['id'];
-        return   DB::table('cart')
+        $total = DB::table('cart')
             ->join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', $user)
             ->sum('products.price');
-
-        dump($total);
 
 
 
