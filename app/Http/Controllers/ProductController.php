@@ -96,9 +96,6 @@ class ProductController extends Controller
             ->join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', $user)
             ->sum('products.price');
-
-
-
         return view('order',['totals'=>$total]);
 
     }
@@ -123,7 +120,16 @@ class ProductController extends Controller
         }
 
         return redirect('/products');
+    }
 
+    public function myOrders(){
 
+        $user = Session::get('user')['id'];
+        $orders = DB::table('orders')
+            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->where('orders.user_id', $user)
+            ->get();
+
+        return view('myOrders',['orders'=>$orders]);
     }
 }

@@ -33,3 +33,4 @@ Route::get('/cart-list',[\App\Http\Controllers\ProductController::class,'cartLis
 Route::get('/removecart/{cart_id}',[\App\Http\Controllers\ProductController::class,'removeCart']);
 Route::get('/odernow',[\App\Http\Controllers\ProductController::class,'oderNow']);
 Route::post('/orderplace',[\App\Http\Controllers\ProductController::class,'orderPlace']);
+Route::get('/my-orders',[\App\Http\Controllers\ProductController::class,'myOrders']);
